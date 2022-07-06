@@ -1,0 +1,16 @@
+name: "Pull Request Assistant"
+author: "Maxim Bîrcu"
+description: "A GitHub Action that represents an assistant in form of a CLI tool which could be used inside a GitHub Pull Request."
+inputs:
+  config-file-path:
+    description: 'The path to the assistant config'
+    required: false
+    default: "./default-config.json"
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+
+branding:
+  icon: "terminal"
+  color: "gray-dark"

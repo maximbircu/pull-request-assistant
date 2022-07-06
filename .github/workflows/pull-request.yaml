@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  pullreqest:
+    name: Pull request styling
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Check branch name and commit messages style
+        uses: maximbircu/pull-request-checkstyle@v1.0.0
+        with:
+          branch-name-regex: '^(revert-\d+-)?\d+(-([a-z])+)+'
+          commit-message-title-regex: '^[A-Z].*'
+
+  checkstyle:
+    name: Project styling
+    runs-on: ubuntu-latest
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Run lint
+        run: yarn lint
+
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test-with-coverage
+
+  #      - name: Codecov
+  #        uses: codecov/codecov-action@v2
+  #        with:
+  #          token: ${{ secrets.CODECOV_TOKEN }}
+  #          fail_ci_if_error: true
+
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Build
+        run: yarn build

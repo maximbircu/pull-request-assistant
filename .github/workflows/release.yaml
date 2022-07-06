@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    branches: [ release-* ]
+
+jobs:
+  CI:
+    name: Check master branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+
+      - name: Install node modules
+        run: yarn install
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test-with-coverage
+
+      - name: Release
+        run: yarn release
+
+      - name: Prepare next version
+        run: yarn prepare-next-version
+
+      - name: Read version name
+        run: |
+          echo "NEW_VERSION_NAME=$(awk '/version/{gsub(/("|",)/,"",$2);print $2}' package.json)" >> $GITHUB_ENV
+
+      - name: Open version update pull request
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Update version name to ${{ env.NEW_VERSION_NAME }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          base: master
+          branch: 0-update-version-name
+          delete-branch: true
+          title: Update version name to ${{ env.NEW_VERSION_NAME }}
+          body: |
+            Update version name to ${{ env.NEW_VERSION_NAME }}
+            
+            This pull request was generated automatically.
+          labels: |
+            tech
+          assignees: maximbircu
+          reviewers: maximbircu
+          draft: false
