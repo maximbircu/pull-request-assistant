@@ -1,4 +1,4 @@
-name: CI
+name: PR
 
 on:
   pull_request:
@@ -44,12 +44,11 @@ jobs:
       - name: Run tests
         run: yarn test-with-coverage
 
-  #      - name: Codecov
-  #        uses: codecov/codecov-action@v2
-  #        with:
-  #          token: ${{ secrets.CODECOV_TOKEN }}
-  #          fail_ci_if_error: true
-
+      - name: Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
 
   build:
     name: Build

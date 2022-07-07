@@ -1,3 +1,8 @@
+[![CI](https://github.com/maximbircu/pull-request-assistant/actions/workflows/master.yaml/badge.svg?branch=master)](https://github.com/maximbircu/pull-request-assistant/actions/workflows/master.yaml)
+[![codecov](https://codecov.io/gh/maximbircu/pull-request-assistant/branch/master/graph/badge.svg?token=SHTOR2H82V)](https://codecov.io/gh/maximbircu/pull-request-assistant)
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/maximbircu/pull-request-assistant/blob/master/LICENSE)
+
 # Pull Request Assistant
 
 A GitHub Action that represents an assistant in form of a CLI tool that you could use inside a GitHub Pull Request. 

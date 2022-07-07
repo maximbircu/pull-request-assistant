@@ -1,4 +1,4 @@
-name: CI
+name: Master
 
 on:
   push:
@@ -24,8 +24,8 @@ jobs:
       - name: Build
         run: yarn build
 
-#      - name: Codecov
-#        uses: codecov/codecov-action@v2
-#        with:
-#          token: ${{ secrets.CODECOV_TOKEN }}
-#          fail_ci_if_error: true
+      - name: Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true

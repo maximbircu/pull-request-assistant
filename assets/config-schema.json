@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "assistant_name": {
+      "type": "string",
+      "default": "friday",
+      "description": "Some description"
+    },
+    "assistant_controllers": {
+      "type": "array",
+      "default": [],
+      "description": "A short description"
+    },
+    "log_level": {
+      "type": "string",
+      "enum": [
+        "silent",
+        "info",
+        "debug"
+      ],
+      "default": "info",
+      "description": "Some description here"
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "merge": {
+          "type": "object",
+          "description": "The merge command config",
+          "additionalProperties": false,
+          "properties": {
+            "default_merge_method": {
+              "type": "string",
+              "enum": ["merge", "squash", "rebase"],
+              "default": "merge",
+              "description": "Some description"
+            },
+            "required_number_of_approvals": {
+              "type": "integer",
+              "default": "2",
+              "description": "The required number of approvals before merge"
+            },
+            "commit_message_template_path": {
+              "type": "string",
+              "default": "",
+              "description": "Some description here"
+            },
+            "issue_id_provider": {
+              "type": "string",
+              "default": "(branchName) => { return branchName.match(/\\d+/)[0] }",
+              "description": "Some description here"
+            },
+            "reviewers_provider": {
+              "type": "string",
+              "default": "(reviewers) => { return reviewers }",
+              "description": "Some description here"
+            },
+            "description_provider": {
+              "type": "string",
+              "default": "(pullRequestDescription) => { return pullRequestDescription }",
+              "description": "Some description here"
+            }
+          }
+        }
+      }
+    }
+  }
+}
