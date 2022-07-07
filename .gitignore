@@ -1,0 +1,6 @@
+.idea
+coverage/
+test-report.html
+reports/
+node_modules/
+dist/

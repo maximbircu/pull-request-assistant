@@ -1,6 +1,6 @@
 # Pull Request Assistant
 
-A Github Action that represents an assitant in form of a CLI tool that you could use inside a Github Pull Requset. 
+A GitHub Action that represents an assistant in form of a CLI tool that you could use inside a GitHub Pull Request. 
 
 License
 -------
