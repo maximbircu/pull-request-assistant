@@ -2,6 +2,12 @@ Changelog
 =========
 
 ## *(In development)*
+Issue: [#7](https://github.com/maximbircu/pull-request-assistant/issues/7)
+- Add `release` and `prepare-next-version` scripts to `packages.json`
+
+Issue: [#5](https://github.com/maximbircu/pull-request-assistant/issues/5)
+- Cover the Assistant tool with a set of docs
+- Add descriptions for the properties from the configuration JSON schema file
 
 Issue: [#5](https://github.com/maximbircu/pull-request-assistant/issues/5)
 - Cover the Assistant tool with a set of docs
@@ -23,4 +29,3 @@ Issue: [#1](https://github.com/maximbircu/pull-request-assistant/issues/1)
 - Configure a GH actions flow for releases
 - Set up GH issue templates
 - Set up a GH Pull Request template
-

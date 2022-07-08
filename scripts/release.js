@@ -58,9 +58,7 @@ class VersionUpdater {
 
 class ProjectFilesParser {
     get versionFromPackageJson() {
-        return executeSync(
-            `awk '/version/{gsub(/("|",)/,"",$2);print $2}' package.json`
-        )
+        return executeSync(`node -pe "require('./package.json')['version']"`)
     }
 
     setVersionNameToPackageJson(newVersion) {
