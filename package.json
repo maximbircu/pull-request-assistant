@@ -1,6 +1,6 @@
 {
   "name": "pull-request-assistant",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A GitHub Action that represents an assistant in form of a CLI tool which could be used inside a GitHub Pull Request.",
   "author": "Maxim Bîrcu",
   "license": "Apache-2.0",
@@ -9,7 +9,9 @@
     "clean": "rm -r dist",
     "lint": "npx eslint src",
     "test": "jest",
-    "test-with-coverage": "jest --coverage"
+    "test-with-coverage": "jest --coverage",
+    "release": "node scripts/release.js release",
+    "prepare-next-version": "node scripts/release.js prepare-next-version"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
