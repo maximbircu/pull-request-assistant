@@ -3,6 +3,10 @@ Changelog
 
 ## *(In development)*
 
+Issue: [#5](https://github.com/maximbircu/pull-request-assistant/issues/5)
+- Cover the Assistant tool with a set of docs
+- Add descriptions for the properties from the configuration JSON schema file
+
 Issue: [#3](https://github.com/maximbircu/pull-request-assistant/issues/3)
 - Implemented the PR Assistant logic based on https://www.npmjs.com/package/commander
 - Made the PR Assistant logic configurable using a JSON config file
