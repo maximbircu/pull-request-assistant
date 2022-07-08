@@ -1,6 +1,6 @@
 {
   "name": "pull-request-assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A GitHub Action that represents an assistant in form of a CLI tool which could be used inside a GitHub Pull Request.",
   "author": "Maxim Bîrcu",
   "license": "Apache-2.0",

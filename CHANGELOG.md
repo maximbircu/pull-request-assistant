@@ -2,6 +2,8 @@ Changelog
 =========
 
 ## *(In development)*
+
+## Version 1.0.0 *2022-6-8*
 Issue: [#7](https://github.com/maximbircu/pull-request-assistant/issues/7)
 - Add `release` and `prepare-next-version` scripts to `packages.json`
 
