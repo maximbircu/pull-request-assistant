@@ -13,15 +13,15 @@
 
 <br />
 
-Pull Request Assistant is GitHub Action which helps automate different routines that we're usually doing with Pull Requests.
+Pull Request Assistant is a GitHub Action which helps automate different routines that we're usually running on Pull Requests.
 
-Using it you can execute commands on your Pull Request exactly the same as in a CLI. The commands could be executed by simply adding them as a comment to the Pull Request.
+Using it, you can execute commands on your Pull Request exactly the same as in a terminal. The commands could be executed by simply adding them as a comment to the Pull Request.
 
-At the moment there is only one command that you could use - which is `merge` and which helps you merge the PRs easier.
-However, the project is based on [commander](https://www.npmjs.com/package/commander) and it's very easy to add new commands. Thus feel free
+At the moment, there is only one command that you can use - which is [merge](documentation/commands/merge.md) and which helps you merge the PRs easier.
+However, the project is based on [commander](https://www.npmjs.com/package/commander), and it's very easy to add new commands. Thus feel free
 to report new issues and contribute to this awesome project.
 
-p.s. you can set the name you like for the assistant however the default name is Friday, I consider it a 
+p.s. you can set the name you like for the assistant however the default name is Friday. I consider it a 
 continuation of https://github.com/maximbircu/friday :)
 
 License

@@ -1,6 +1,6 @@
 # Quick start 
 
-To quickly get started just add the assistant GitHub Actions workflow to `.github/workflows/pull-request-assistant.yml`
+To quickly get started, just add the assistant GitHub Actions workflow to `.github/workflows/pull-request-assistant.yml`
 inside the root of your repository.
 
    ```yaml
@@ -35,17 +35,17 @@ inside the root of your repository.
 ### Congratulations 🎉
 
 You're done. Now to check that everything works fine just open a new Pull Request and try to run any
-command by adding a comment containg `friday --help`
+command by adding a comment containing `friday --help`
 
 <img width="600" src="https://user-images.githubusercontent.com/12527390/178046528-7e30ae71-fe84-49ba-a732-44288cb93e99.png"/>
 
-After a short a mount of time the command should be executed and the comment should change.
+After a short amount of time, the command should be executed and the comment should change.
 
 <img width="600" src="https://user-images.githubusercontent.com/12527390/178046783-0ca2c91b-1df8-44db-828c-31acca5fa609.png"/>
 
 Thus, you can basically explore the assistant's abilities using the `friday --help` command.
 
-If you're looking for moe ways to configure the assistant you can check out:
+If you're looking for more ways to configure the assistant you can check out:
 
 - [🔧 Configuration]()
 - [📃 Commands](samples/android)

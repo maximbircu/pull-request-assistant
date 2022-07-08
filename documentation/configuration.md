@@ -6,7 +6,7 @@ supported configuration parameters would be to take a look at:
 - [Configuration File JSON Schema](../assets/config-schema.json)
 - [Default Configuration File](../assets/default-config.json)
 
-In case you want to adjust default configuration, you should:
+In case you want to adjust the default configuration, you should:
 
 1. add a new config file to your repository. For example `friday-config.json`
 2. Indicate the path to the config file inside your GH Action workflow YAML file.
