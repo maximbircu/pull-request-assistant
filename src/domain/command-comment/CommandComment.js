@@ -24,9 +24,13 @@ export class CommandComment {
     }
 
     get isLeftByAssistantController() {
-        return this.#config.assistantControllers.some((controller) => {
-            return controller === this.#comment.author
-        })
+        if (this.#config.assistantControllers.length === 0) {
+            return true
+        } else {
+            return this.#config.assistantControllers.some((controller) => {
+                return controller === this.#comment.author
+            })
+        }
     }
 
     get isPending() {
