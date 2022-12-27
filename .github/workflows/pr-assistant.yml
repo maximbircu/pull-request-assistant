@@ -1,0 +1,28 @@
+name: PR assistant
+
+on:
+  issue_comment:
+    types: [ created ]
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+
+jobs:
+  run-pull-request-assitant:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    steps:
+      - name: SCM
+        uses: actions/checkout@v2
+
+      - name: Run assitant
+        uses: maximbircu/pull-request-assistant@1.0.0
+        with:
+          config-file-path: .github/workflows/pr-assistant/pull-request-assistant-config.json
+
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

@@ -1,0 +1,12 @@
+{
+  "assistant_name": "friday",
+  "log_level": "info",
+  "assistant_controllers": ["maximbircu"],
+  "commands": {
+    "merge": {
+      "default_merge_method": "squash",
+      "required_number_of_approvals": 1,
+      "description_provider": "b=>{let a=b.description.split(\"\\n\"),c=a.indexOf(a.find(a=>a.includes(\"What has been done\")))+1,d=a.indexOf(a.find(a=>a.includes(\"### How to test\")));return a.slice(c,d).join(\"\\n\")}"
+    }
+  }
+}
