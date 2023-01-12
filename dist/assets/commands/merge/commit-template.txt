@@ -1,5 +1,0 @@
-Issue: {issue_id}
-Reviewers: {reviewers}
-PR: GH-{pr_number}
-
-{description}
