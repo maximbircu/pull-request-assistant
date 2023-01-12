@@ -1,0 +1,15 @@
+{
+  "assistant_name": "friday",
+  "log_level": "info",
+  "assistant_controllers": [],
+  "commands": {
+    "merge": {
+      "default_merge_method": "merge",
+      "required_number_of_approvals": 1,
+      "commit_message_template_path": "/assets/commands/merge/commit-template.txt",
+      "issue_id_provider": "(pullRequest) => pullRequest.sourceBranch.match(/\\d+/)[0]",
+      "reviewers_provider": "(reviewers) => reviewers.join(' ')",
+      "description_provider": "(pullRequest) => pullRequest.description"
+    }
+  }
+}
