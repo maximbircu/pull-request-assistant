@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "assistant_name": {
+      "type": "string",
+      "default": "friday",
+      "description": "The assistant name (it will be used in the first part of the command i.e. friday merge)"
+    },
+    "assistant_controllers": {
+      "type": "array",
+      "default": [],
+      "description": "A list of GitHub usernames of the the users that should have rights to run assistant commands"
+    },
+    "log_level": {
+      "type": "string",
+      "enum": [
+        "silent",
+        "info",
+        "debug"
+      ],
+      "default": "info",
+      "description": "The log level of the assistant (very handy to use debug for development process)"
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "merge": {
+          "type": "object",
+          "description": "The config for the merge command",
+          "additionalProperties": false,
+          "properties": {
+            "default_merge_method": {
+              "type": "string",
+              "enum": [
+                "merge",
+                "squash",
+                "rebase"
+              ],
+              "default": "merge",
+              "description": "The default merge type that will be used for the assistant when merging a PR"
+            },
+            "required_number_of_approvals": {
+              "type": "integer",
+              "default": "2",
+              "description": "The required minimal number of approvals to merge the PR"
+            },
+            "commit_message_template_path": {
+              "type": "string",
+              "default": "",
+              "description": "The path to the commit message template"
+            },
+            "issue_id_provider": {
+              "type": "string",
+              "default": "(branchName) => { return branchName.match(/\\d+/)[0] }",
+              "description": "A JS lambda which is used to gather the issue id the PR relates to (in case you want to attach it to the merge commit message)"
+            },
+            "reviewers_provider": {
+              "type": "string",
+              "default": "(reviewers) => { return reviewers }",
+              "description": "A JS lambda which is used to format/map the list of reviewers that might also be added to the merge commit message"
+            },
+            "description_provider": {
+              "type": "string",
+              "default": "(pullRequestDescription) => { return pullRequestDescription }",
+              "description": "A JS lambda which is used to provide a commit message detailed description"
+            }
+          }
+        }
+      }
+    }
+  }
+}

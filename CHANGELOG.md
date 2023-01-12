@@ -2,6 +2,8 @@ Changelog
 =========
 
 ## *(In development)*
+Issue: [#13](https://github.com/maximbircu/pull-request-assistant/issues/13)
+- Do not block Friday command in case the controllers list is empty
 
 ## Version 1.0.0 *2022-6-8*
 Issue: [#7](https://github.com/maximbircu/pull-request-assistant/issues/7)

@@ -31,6 +31,17 @@ describe('parses properly the command comment', () => {
         expect(command.isLeftByAssistantController).toBeFalsy()
     })
 
+    test('returns true in case the controllers list is empty', () => {
+        const fakeConfig = { assistantName: 'friday', assistantControllers: [] }
+        const commentBody = 'friday -h\n\n' +
+            'body\n\n' +
+            '**Executed** [_(details)_](https://github.com/maximbircu/repo/actions/runs/2353615) 🟢'
+        const comment = new Comment('bob', commentBody, 1)
+        const command = new CommandComment(comment, fakeConfig, commentsRepositorySub)
+
+        expect(command.isLeftByAssistantController).toBeTruthy()
+    })
+
     test('returns true if the command status is pending', () => {
         const comment = new Comment(
             'bob',
