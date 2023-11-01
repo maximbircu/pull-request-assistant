@@ -6,6 +6,7 @@
     "merge": {
       "default_merge_method": "merge",
       "required_number_of_approvals": 1,
+      "required_checks": [],
       "commit_message_template_path": "/assets/commands/merge/commit-template.txt",
       "issue_id_provider": "(pullRequest) => pullRequest.sourceBranch.match(/\\d+/)[0]",
       "reviewers_provider": "(reviewers) => reviewers.join(' ')",
