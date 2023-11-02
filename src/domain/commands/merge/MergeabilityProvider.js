@@ -39,7 +39,7 @@ export class MergeabilityProvider {
         console.table(this.#config)
         const checkRuns = await this.#pullRequestRepository.getChecks(pullRequest)
         console.table(checkRuns[0])
-        return checkRuns.filter((check) => check.name in this.#config.requiredChecks)
+        return checkRuns.filter((check) => this.#config.requiredChecks.includes(check.name))
             .every((check) => check.isCompletedSuccessfully)
     }
 }
