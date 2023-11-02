@@ -10,6 +10,7 @@ test('overrides the config properly', () => {
                 merge: {
                     default_merge_method: 'merge',
                     required_number_of_approvals: 1,
+                    required_checks: [],
                     commit_message_template_path: '/assets/commands/merge/commit-template.txt',
                     issue_id_provider: '(pullRequest) => pullRequest.sourceBranch.match(/\\d+/)[0]',
                     reviewers_provider: '(reviewers) => reviewers.join(\' \')',
@@ -23,6 +24,7 @@ test('overrides the config properly', () => {
                 merge: {
                     default_merge_method: 'merge',
                     required_number_of_approvals: 10,
+                    required_checks: ['CI'],
                     reviewers_provider: '(reviewers) => reviewers.join(\' \')',
                     description_provider: '(pullRequest) => pullRequest.description'
                 }
@@ -38,6 +40,7 @@ test('overrides the config properly', () => {
             merge: {
                 default_merge_method: 'merge',
                 required_number_of_approvals: 10,
+                required_checks: ['CI'],
                 commit_message_template_path: '/assets/commands/merge/commit-template.txt',
                 issue_id_provider: '(pullRequest) => pullRequest.sourceBranch.match(/\\d+/)[0]',
                 reviewers_provider: '(reviewers) => reviewers.join(\' \')',
@@ -56,7 +59,8 @@ test('converts the object keys to camel case', () => {
             'commands': {
                 'merge': {
                     'default_merge_method': 'merge',
-                    'required_number_of_approvals': 1
+                    'required_number_of_approvals': 1,
+                    'required_checks': []
                 }
             }
         }
@@ -69,7 +73,8 @@ test('converts the object keys to camel case', () => {
         'commands': {
             'merge': {
                 'defaultMergeMethod': 'merge',
-                'requiredNumberOfApprovals': 1
+                'requiredNumberOfApprovals': 1,
+                'requiredChecks': []
             }
         }
     })
