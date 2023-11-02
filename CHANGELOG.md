@@ -2,6 +2,7 @@ Changelog
 =========
 
 ## *(In development)*
+- Add `required_checks` config property to allow for a custom list of required GitHub Checks to pass before merging
 
 ## Version 1.0.1 *2023-0-12*
 Issue: [#13](https://github.com/maximbircu/pull-request-assistant/issues/13)
