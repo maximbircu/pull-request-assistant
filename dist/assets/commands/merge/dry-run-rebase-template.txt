@@ -1,0 +1,7 @@
+Mergeable - {mergeability}
+Method 	  - {merge_method}
+Reviewers - {reviewers_list}
+
+Commits
+
+{commits}
