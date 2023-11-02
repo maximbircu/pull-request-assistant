@@ -2,6 +2,8 @@ Changelog
 =========
 
 ## *(In development)*
+
+## Version 1.0.2 *2023-10-2*
 - Add `required_checks` config property to allow for a custom list of required GitHub Checks to pass before merging
 
 ## Version 1.0.1 *2023-0-12*
