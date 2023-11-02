@@ -36,8 +36,10 @@ export class MergeabilityProvider {
     }
 
     async checksPassed(pullRequest) {
+        console.table(this.#config)
         const checkRuns = await this.#pullRequestRepository.getChecks(pullRequest)
-        return checkRuns.filter((check) => check.name !== this.#githubContext.job)
+        console.table(checkRuns[0])
+        return checkRuns.filter((check) => this.#config.requiredChecks.includes(check.name))
             .every((check) => check.isCompletedSuccessfully)
     }
 }

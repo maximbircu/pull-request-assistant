@@ -47,6 +47,14 @@
               "default": "2",
               "description": "The required minimal number of approvals to merge the PR"
             },
+            "required_checks": {
+              "type": "array",
+              "description": "The required checks that need to succeed for PR to be mergeable",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
             "commit_message_template_path": {
               "type": "string",
               "default": "",

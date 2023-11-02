@@ -15,28 +15,34 @@ test('returns proper mergeability when the approves are not sufficient', async (
         pullRequestRepositoryStub,
         reviewersProviderStub,
         { job: 'pull-request-assistant' },
-        { requiredNumberOfApprovals: 3 }
+        { 
+            requiredNumberOfApprovals: 3,
+            requiredChecks: ['CI']
+        }
     )
 
     expect(await provider.getMergeability({}))
         .toEqual({ mergeable: false, reason: 'Doesn\'t have enough approves!' })
 })
 
-test('returns proper mergeability when not all the checks passed', async () => {
+test('returns proper mergeability when not all required checks passed', async () => {
     reviewersProviderStub.enqueueReviewers(['bob', 'max'])
     pullRequestRepositoryStub.enqueueChecks([new CheckRun('CI', CheckRunStatus.RUNNING, null)])
     const provider = new MergeabilityProvider(
         pullRequestRepositoryStub,
         reviewersProviderStub,
         { job: 'pull-request-assistant' },
-        { requiredNumberOfApprovals: 2 }
+        { 
+            requiredNumberOfApprovals: 2,
+            requiredChecks: ['CI']
+        }
     )
 
     expect(await provider.getMergeability({}))
         .toEqual({ mergeable: false, reason: 'Not all the checks passed' })
 })
 
-test('returns proper mergeability when not all the checks passed', async () => {
+test('returns proper mergeability when not all required checks passed', async () => {
     reviewersProviderStub.enqueueReviewers(['bob', 'max'])
     pullRequestRepositoryStub.enqueueChecks(
         [new CheckRun('CI', CheckRunStatus.COMPLETED, CheckRunConclusion.SUCCESS)]
@@ -45,7 +51,10 @@ test('returns proper mergeability when not all the checks passed', async () => {
         pullRequestRepositoryStub,
         reviewersProviderStub,
         { job: 'pull-request-assistant' },
-        { requiredNumberOfApprovals: 2 }
+        { 
+            requiredNumberOfApprovals: 2,
+            requiredChecks: ['CI']
+        }
     )
 
     expect(await provider.getMergeability({ isMergeable: false })).toEqual(
@@ -54,6 +63,26 @@ test('returns proper mergeability when not all the checks passed', async () => {
             reason: 'There is something wrong with mergeability, are there any conflicts?'
         }
     )
+})
+
+test('returns true even if non-required checks did not succeed', async () => {
+    reviewersProviderStub.enqueueReviewers(['bob', 'max'])
+    pullRequestRepositoryStub.enqueueChecks(
+        [new CheckRun('CI', CheckRunStatus.COMPLETED, CheckRunConclusion.SUCCESS)],
+        [new CheckRun('CI2', CheckRunStatus.RUNNING, null)]
+    )
+    const provider = new MergeabilityProvider(
+        pullRequestRepositoryStub,
+        reviewersProviderStub,
+        { job: 'pull-request-assistant' },
+        { 
+            requiredNumberOfApprovals: 2,
+            requiredChecks: ['CI']
+        }
+    )
+
+    expect(await provider.getMergeability({ isMergeable: true }))
+        .toEqual({ mergeable: true, reason: null })
 })
 
 test('returns proper mergeability when the PR is mergeable', async () => {
@@ -65,7 +94,10 @@ test('returns proper mergeability when the PR is mergeable', async () => {
         pullRequestRepositoryStub,
         reviewersProviderStub,
         { job: 'pull-request-assistant' },
-        { requiredNumberOfApprovals: 2 }
+        { 
+            requiredNumberOfApprovals: 2,
+            requiredChecks: ['CI']
+        }
     )
 
     expect(await provider.getMergeability({ isMergeable: true }))
